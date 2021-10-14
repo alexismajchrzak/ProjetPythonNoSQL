@@ -3,9 +3,9 @@ from flask import request
 from flask import make_response
 import pymongo as pm
 import game as g
-import note as n
-import editor as e
-import rank as r
+#import note as n
+#import editor as e
+#import rank as r
 app = Flask(__name__)
 
 
@@ -15,7 +15,7 @@ app = Flask(__name__)
 #cette fonction permet de renvoyer l'utilisateur vers différentes pages
 #
 def main():
-    user = input('Quelle categorie souhaites-tu accéder?')
+    user = input('Quelle categorie souhaites-tu accéder?\n')
     match user:
         case ("jeux"):
             return g.game()
