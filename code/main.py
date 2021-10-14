@@ -2,21 +2,31 @@ from flask import Flask
 from flask import request
 from flask import make_response
 import pymongo as pm
-
+import game as g
+import note as n
+import editor as e
+import rank as r
 app = Flask(__name__)
 
 
 # methods=["GET","PATCH"]
 @app.route("/")
+#
+#cette fonction permet de renvoyer l'utilisateur vers différentes pages
+#
 def main():
-
-
-    db_url = f'mongodb+srv://groupe7:root@projetpython.uo5ak.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-    client = pm.MongoClient(db_url)
-    for i in client.fillingGame.game.find():
-        print(i)
-    return 'nb'
-
+    user = input('Quelle categorie souhaites-tu accéder?')
+    match user:
+        case ("jeux"):
+            return g.game()
+        case ("note"):
+            return n.note()
+        case ("editeur"):
+            return e.editor()
+        case ("classement"):
+            return r.rank()
+            
+        
 
 if __name__ == '__main__':
     app.run(
