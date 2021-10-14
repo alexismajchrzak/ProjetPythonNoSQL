@@ -14,9 +14,7 @@ app = Flask(__name__)
 #
 #cette fonction permet de renvoyer l'utilisateur vers différentes pages
 #
-def main():
-    user = input('Quelle categorie souhaites-tu accéder?\n')
-    
+   
 @app.route('/jeux')
 def gameMain():
     return g.game()
