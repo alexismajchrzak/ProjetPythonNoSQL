@@ -16,15 +16,19 @@ app = Flask(__name__)
 #
 def main():
     user = input('Quelle categorie souhaites-tu accéder?\n')
-    match user:
-        case ("jeux"):
-            return g.game()
-        case ("note"):
-            return n.note()
-        case ("editeur"):
-            return e.editor()
-        case ("classement"):
-            return r.rank()
+    
+@app.route('/jeux')
+def gameMain():
+    return g.game()
+@app.route('/note')
+def noteMain():
+    return n.note()
+@app.route('/editeur')
+def editorMain():
+    return e.editor()
+@app.route('/classement')
+def rankMain():
+    return r.rank()
             
         
 
