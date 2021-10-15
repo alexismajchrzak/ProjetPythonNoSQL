@@ -134,7 +134,7 @@ def delete(nameGame):
 #retourne un tableau avec l'élément modifier
 #
 @app.route('/jeux/modifier/<string:nameGame>/<string:nameGame2>')
-def method_name(nameGame,nameGame2):
+def edit(nameGame,nameGame2):
     '''
     il y a 5 tableau pour l'affichage sur la page web
     '''
