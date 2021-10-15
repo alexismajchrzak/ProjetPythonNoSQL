@@ -2,10 +2,10 @@ from flask import Flask
 from flask import request
 from flask import make_response
 import pymongo as pm
-import game as g
+#import game as g
 #import note as n
 #import editor as e
-#import rank as r
+import rank as r
 app = Flask(__name__)
 
 
@@ -24,9 +24,12 @@ def noteMain():
 @app.route('/editeur')
 def editorMain():
     return e.editor()
-@app.route('/classement')
-def rankMain():
-    return r.rank()
+@app.route('/classement/<string:typeSort>')
+def rankMain(typeSort):
+    return r.rank(typeSort)
+@app.route('/trier-par-note')
+def sortNote():
+    return r.sortNote()
             
         
 
