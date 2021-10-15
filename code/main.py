@@ -24,9 +24,12 @@ def noteMain():
 @app.route('/editeur')
 def editorMain():
     return e.editor()
-@app.route('/classement')
-def rankMain():
-    return r.rank()
+@app.route('/classement/<string:typeSort>')
+def rankMain(typeSort):
+    return r.rank(typeSort)
+@app.route('/trier-par-note')
+def sortNote():
+    return r.sortNote()
             
         
 
