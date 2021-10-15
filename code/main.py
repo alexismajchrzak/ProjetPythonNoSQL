@@ -2,15 +2,19 @@ from flask import Flask
 from flask import request
 from flask import make_response
 import pymongo as pm
-#import game as g
-#import note as n
-#import editor as e
+import game as g
+import note as n
+import editorFile as e
 import rank as r
 app = Flask(__name__)
 
 
-# methods=["GET","PATCH"]
+#
+#cette fonction permet d'afficher la page principal
+#
 @app.route("/")
+def main():
+    return 'acceuil'
 #
 #cette fonction permet de renvoyer l'utilisateur vers différentes pages
 #
@@ -24,6 +28,15 @@ def noteMain():
 @app.route('/editeur')
 def editorMain():
     return e.editor()
+@app.route('/editeur/ajouter')
+def addEditorMain():
+    return e.addEditor()
+@app.route('/editeur/supprimer')
+def suppEditorMain():
+    return e.suppEditor()
+@app.route('/editeur/modifier')
+def modifyEditorMain():
+    return e.modifyEditor()
 @app.route('/classement/<string:typeSort>')
 def rankMain(typeSort):
     return r.rank(typeSort)

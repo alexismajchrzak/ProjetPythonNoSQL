@@ -62,7 +62,7 @@ suppEditor() supprime un éditeur de la base de données en fonction de l'id ent
 '''
 
 
-@app.route("/supp")
+@app.route("/editeur/supp")
 def suppEditor():
     db_url = f'mongodb+srv://groupe7:root@projetpython.uo5ak.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
     client = pm.MongoClient(db_url)
@@ -84,7 +84,7 @@ def suppEditor():
 '''
 
 
-@app.route("/modify")
+@app.route("/editeur/modifier")
 def modifyEditor():
     db_url = f'mongodb+srv://groupe7:root@projetpython.uo5ak.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
     client = pm.MongoClient(db_url)
