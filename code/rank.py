@@ -1,6 +1,16 @@
 from flask import Flask, request
 import pymongo as pm
 
+
+
+'''
+- Classement odre alphabétique ou inverssé et classement par note 
+
+:parameter : none 
+
+    return body : string [] 
+'''
+
 app = Flask(__name__)
 @app.route('/classement/<string:typeSort>')
 def rank(typeSort):
@@ -24,6 +34,7 @@ def rank(typeSort):
         return f'{sorted(tabIdGame)}'
     if typeSort == 'alphabetique-inverser':
         return f'{sorted(tabIdGame , reverse=True)}'
+    
 @app.route('/trier-par-note')
 def sortNote():
     tab = []
