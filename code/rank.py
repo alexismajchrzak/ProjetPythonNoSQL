@@ -20,7 +20,7 @@ def rank():
     for w in coll.find():
         print(w["nameGame"])
     for y in range(len(tab)):
-        tabIdGame.append(f' note: {tab[y]["meanNote"]}/5 {tab[y]["nameGame"]} <br>')
+        tabIdGame.append(f' note : {tab[y]["meanNote"]}/5 {tab[y]["nameGame"]} <br>')
     return f'{sorted(tabIdGame)}'
 
 
@@ -43,8 +43,6 @@ def rankNote():
     for y in range(len(tab4)):
         tabIdGamee.append(f' note: {tab3[y]["meanNote"]}/5 {tab3[y]["nameGame"]} <br>')
     return f'{(tabIdGamee)}'
-
-
 
 
 
