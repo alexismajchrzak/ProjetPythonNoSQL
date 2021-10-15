@@ -2,9 +2,8 @@ from flask import Flask, request
 import pymongo as pm
 
 app = Flask(__name__)
-
-@app.route('/classement')
-def rank():
+@app.route('/classement/<string:typeSort>')
+def rank(typeSort):
     tab = []
     tab2 = []
     tabIdGame = []
@@ -20,29 +19,30 @@ def rank():
     for w in coll.find():
         print(w["nameGame"])
     for y in range(len(tab)):
-        tabIdGame.append(f' note : {tab[y]["meanNote"]}/5 {tab[y]["nameGame"]} <br>')
-    return f'{sorted(tabIdGame)}'
-
-
-@app.route('/classement/note')
-def rankNote():
-    tab3 = []
-    tab4 = []
-    tabIdGamee = []
+        tabIdGame.append(f' a-z : {tab[y]["nameGame"]} <br>')
+    if typeSort == 'alphabetique':
+        return f'{sorted(tabIdGame)}'
+    if typeSort == 'alphabetique-inverser':
+        return f'{sorted(tabIdGame , reverse=True)}'
+@app.route('/trier-par-note')
+def sortNote():
+    tab = []
+    tab2 = []
+    tabIdGame = []
     db_url = f'mongodb+srv://groupe7:root@projetpython.uo5ak.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
     client = pm.MongoClient(db_url)
     db = client.fillingGame
     coll = db.game
     for i in client.fillingGame.game.find():
-        tab3.append(i)
+        tab.append(i)
     for t in db.list_collection_names():
         body = t
-        tab4.append(body)
+        tab2.append(body)
     for w in coll.find():
         print(w["nameGame"])
-    for y in range(len(tab4)):
-        tabIdGamee.append(f' note: {tab3[y]["meanNote"]}/5 {tab3[y]["nameGame"]} <br>')
-    return f'{(tabIdGamee)}'
+    for y in range(len(tab)):
+        tabIdGame.append(f' note: {tab[y]["meanNote"]}/5 {tab[y]["nameGame"]} <br>')
+    return f'{sorted(tabIdGame, reverse=True)}'
 
 
 
